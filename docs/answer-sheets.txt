@@ -1,7 +1,7 @@
 AUTOCREW: GARAGE TO GRID — COMPLETE INSTRUCTOR ANSWER SHEET
 ENISO Autocrew | Ayoub Dhaouadi
 
-Website: https://autocrew-garage-to-grid-20261012.ayoubdhaouadi08.chatgpt.site
+Website: http://127.0.0.1:5173
 
 CONTENTS
 1. All 11 quiz answers, with questions and explanations
@@ -682,7 +682,7 @@ EXPECTED FINAL REPOSITORY STATE
 COMMON QUESTIONS
 
 "File not found: *"
-Refresh the deployed website to load the wildcard-compatible release. git add *
+Refresh the local website to load the wildcard-compatible source. git add *
 now expands visible filenames. git add . is also a valid broad staging command.
 
 "Ignored paths: telemetry.log"

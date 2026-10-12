@@ -6,7 +6,7 @@
     "fields": {
       "See": "the race prototype in a 3D garage, workshop title, ENISO/Autocrew text branding, and the journey from garage to starting grid. On the SAME welcome screen, show **Ayoub Dhaouadi — Software Engineer · M2 Research Master’s Student at ENIT**, with **Signals, Systems and Data** beneath. Include [LinkedIn](https://www.linkedin.com/in/ayoub-dhaouadi-eng/) and [GitHub](https://github.com/crunchy-tf) buttons opening new tabs. All essential instructor details are initially visible; an About panel repeats them later.",
       "Explain": "by the end, students will record changes, work on branches, resolve a conflict, and submit reviewed work. The car makes file changes visible.",
-      "Do": "open the same student URL/QR; select student mode and check that the page loads. Orbit the car or choose a camera preset. Pair up if useful.",
+      "Do": "open the local workshop on each laptop; select student mode and check that the page loads. Orbit the car or choose a camera preset. Pair up if useful.",
       "Result": "everyone can access the workshop; no GitHub account or installation is needed for the core session."
     },
     "context": null,

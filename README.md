@@ -14,7 +14,7 @@ A hands-on Git & GitHub workshop where every repair changes a 3D race prototype.
 ![Three.js](https://img.shields.io/badge/Three.js-3D_garage-FFAD78?style=flat-square&logo=threedotjs&labelColor=17212B)
 ![Node.js](https://img.shields.io/badge/Node.js-24-8DCB9B?style=flat-square&logo=nodedotjs&labelColor=17212B)
 
-[**Open the workshop**](https://autocrew-garage-to-grid-20261012.ayoubdhaouadi08.chatgpt.site) · [**Windows setup**](#run-on-windows) · [**Course map**](docs/course-map.md) · [**Answer sheets**](docs/answer-sheets.txt)
+[**Windows setup**](#run-on-windows) · [**Course map**](docs/course-map.md) · [**Answer sheets**](docs/answer-sheets.txt)
 
 </div>
 
@@ -193,7 +193,7 @@ The test suite contains **40 tests**, including six comparisons against real Git
 
 `build` creates `dist/`. `preview` serves that build locally, normally at **http://127.0.0.1:4173/**; follow the printed URL if the port differs. Opening `index.html` directly with `file://` is not supported.
 
-For static hosting, deploy **the contents of `dist/`** to a host serving HTTP/HTTPS. Relative assets and hash routes support subdirectory hosting without route rewrites. No backend or environment secrets are needed. The built lesson assets are bundled locally; external profile links and the Join QR lead to online resources.
+The workshop runs locally. The built lesson assets are bundled with the project; profile links and official documentation open external resources. No backend or environment secrets are required.
 
 ## Troubleshooting on Windows
 
@@ -210,7 +210,7 @@ For static hosting, deploy **the contents of `dist/`** to a host serving HTTP/HT
 | Real-Git tests cannot launch `git` | Install Git for Windows and reopen the terminal. The core browser exercises do not execute your system Git. |
 | The mission remains incomplete | Compare Working / Index / HEAD; commit the intended repair and integrate the required branch history. Check the answer sheet after trying a hint. |
 
-Progress is stored per browser and **origin**. The online website, `127.0.0.1`, `localhost`, and different ports have separate progress. Export/import bridges them.
+Progress is stored per browser and **origin**. `127.0.0.1`, `localhost`, and different ports have separate progress. Export/import bridges them.
 
 ## Under the hood
 

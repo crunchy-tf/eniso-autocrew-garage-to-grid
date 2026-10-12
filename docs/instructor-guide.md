@@ -1,15 +1,15 @@
 # Autocrew: Garage to Grid — instructor runbook
 
-Public student website: https://autocrew-garage-to-grid-20261012.ayoubdhaouadi08.chatgpt.site
+Local student website: http://127.0.0.1:5173
 
-Presenter launch: https://autocrew-garage-to-grid-20261012.ayoubdhaouadi08.chatgpt.site/?mode=presenter#/welcome
+Presenter launch: http://127.0.0.1:5173/?mode=presenter#/welcome
 
 Instructor: Ayoub Dhaouadi — Software Engineer; M2 Research Master’s Student at ENIT, Signals, Systems and Data.
 
 ## Before students arrive
 
 1. Open the public link in your presentation browser and click Start presenting.
-2. Display Student link / QR on the welcome screen. The students need only a browser and connectivity for the core.
+2. Have students follow the Windows setup instructions in README.md and open their own local server. The localhost URL is specific to each laptop.
 3. Open one additional student tab to demonstrate independent progress. Each device has its own work; your navigation does not move student pages.
 4. Use Settings → Fullscreen if available; choose low quality or diagram mode for weaker devices.
 5. Explain the safe teaching terminal: virtual files, a defined Git command subset, illustrative IDs and clone URL, simulated GitHub review.
@@ -83,7 +83,7 @@ Core session · elapsed 0–3 minutes.
 
 **Explain:** by the end, students will record changes, work on branches, resolve a conflict, and submit reviewed work. The car makes file changes visible.
 
-**Do:** open the same student URL/QR; select student mode and check that the page loads. Orbit the car or choose a camera preset. Pair up if useful.
+**Do:** open the local workshop URL on each laptop; select student mode and check that the page loads. Orbit the car or choose a camera preset. Pair up if useful.
 
 **Result:** everyone can access the workshop; no GitHub account or installation is needed for the core session.
 
