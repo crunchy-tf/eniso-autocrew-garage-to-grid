@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+<title id="title">Autocrew: Garage to Grid</title><desc id="desc">An automotive Git workshop, from investigation to the starting grid, with branching commit lines.</desc>
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#9BD5CF" stroke-opacity=".065"/></pattern></defs>
+<rect width="1280" height="360" rx="18" fill="#131D27"/><rect width="1280" height="360" rx="18" fill="url(#grid)"/>
+<path d="M0 0H18V360H0Z" fill="#FFAD78"/><path d="M864 0H896L716 360H684Z" fill="#FFAD78" opacity=".08"/>
+<text x="68" y="65" fill="#A7DCD6" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="4">ENISO × AUTOCREW</text>
+<text x="64" y="143" fill="#F3F1E9" font-family="Arial,sans-serif" font-size="66" font-weight="900" letter-spacing="-2">GARAGE</text>
+<text x="64" y="216" fill="#FFAD78" font-family="Arial,sans-serif" font-size="66" font-weight="900" letter-spacing="-2">TO GRID.</text>
+<text x="68" y="255" fill="#B7C5CC" font-family="Arial,sans-serif" font-size="19">Learn Git. Build the car. Reach the grid.</text>
+<rect x="68" y="287" width="93" height="27" rx="5" fill="#253741"/><text x="82" y="306" fill="#E0ECE8" font-family="monospace" font-size="13">git commit</text>
+<rect x="172" y="287" width="90" height="27" rx="5" fill="#253741"/><text x="187" y="306" fill="#E0ECE8" font-family="monospace" font-size="13">git merge</text>
+<rect x="273" y="287" width="86" height="27" rx="5" fill="#253741"/><text x="290" y="306" fill="#E0ECE8" font-family="monospace" font-size="13">git push</text>
+<g fill="none" stroke-width="4"><path d="M760 261H1147" stroke="#8BCDC5"/><path d="M827 261C865 261 852 161 894 161H983C1023 161 1015 261 1055 261" stroke="#FFAD78"/></g>
+<g stroke="#131D27" stroke-width="7"><circle cx="765" cy="261" r="13" fill="#8BCDC5"/><circle cx="827" cy="261" r="13" fill="#8BCDC5"/><circle cx="916" cy="161" r="13" fill="#FFAD78"/><circle cx="984" cy="161" r="13" fill="#FFAD78"/><circle cx="1055" cy="261" r="13" fill="#8BCDC5"/><circle cx="1147" cy="261" r="13" fill="#8BCDC5"/></g>
+<text x="866" y="122" fill="#FFAD78" font-family="monospace" font-size="16">feature/race-ready</text><text x="1087" y="302" fill="#8BCDC5" font-family="monospace" font-size="16">main</text>
+<g transform="translate(1154 70)"><path d="M0 0V70" stroke="#CAD3D6" stroke-width="3"/><g fill="#F3F1E9"><path d="M2 0H14V12H2ZM26 0H38V12H26ZM14 12H26V24H14ZM2 24H14V36H2ZM26 24H38V36H26Z"/></g><g fill="#354550"><path d="M14 0H26V12H14ZM2 12H14V24H2ZM26 12H38V24H26ZM14 24H26V36H14Z"/></g></g>
+</svg>

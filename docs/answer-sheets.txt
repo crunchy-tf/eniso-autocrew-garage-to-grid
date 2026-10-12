@@ -1,0 +1,737 @@
+AUTOCREW: GARAGE TO GRID — COMPLETE INSTRUCTOR ANSWER SHEET
+ENISO Autocrew | Ayoub Dhaouadi
+
+Website: https://autocrew-garage-to-grid-20261012.ayoubdhaouadi08.chatgpt.site
+
+CONTENTS
+1. All 11 quiz answers, with questions and explanations
+2. All guided practical exercises
+3. All six main missions: canonical solutions
+4. A complete alternative six-mission solution
+5. Optional real Git/GitHub lab
+6. Final configuration and troubleshooting answers
+
+HOW TO USE THIS SHEET
+Commands in the core workshop run in the website's virtual terminal.
+The workshop-demo repository URL is illustrative, not a real GitHub repository.
+The optional real lab runs on a student's computer with a real repository URL.
+
+Suggested commands are examples, not mandatory scripts. Equivalent workflows
+count when they produce the required saved files and integrated history.
+Commit messages can vary. Branch names can vary; consistently substitute the
+student's working branch for race-ready. Illustrative commit IDs apply to the
+prepared fixtures; inspect the student's history when it differs.
+
+Some guided slides share a repository; others start independent exercises.
+Do not assume the history or branch state transfers between these contexts.
+The six main missions DO share one continuous repository.
+
+============================================================
+1. ALL QUIZ ANSWERS
+============================================================
+
+1. Can you create a Git commit while offline?
+Section: Origin story
+   A. Yes: the commit is recorded locally.
+   B. No: every commit needs GitHub.
+   C. Only if the project is public.
+ANSWER: A — Yes: the commit is recorded locally.
+WHY: Most core Git operations use your local repository. Sharing with an online remote is separate.
+
+2. Which statement describes Git and GitHub?
+Section: Origin story
+   A. They are two names for the same application.
+   B. Git manages history; GitHub hosts repositories and collaboration.
+   C. GitHub is required to use Git.
+ANSWER: B — Git manages history; GitHub hosts repositories and collaboration.
+WHY: Git is the version-control tool. GitHub is one hosting and collaboration platform built around Git.
+
+3. You edited lighting and steering, but staged only lighting. Which edit is recorded in the commit?
+Section: Snapshots
+   A. Both edits, because both files were saved.
+   B. Only the staged lighting change.
+   C. Only the most recently edited file.
+ANSWER: B — Only the staged lighting change.
+WHY: The commit saves the staged snapshot, including unchanged tracked files. The unstaged steering edit remains in your working files.
+
+4. You staged headlights=on, then edited it to off without adding again. Which version gets committed?
+Section: Snapshots
+   A. Off: Git always uses the latest working file.
+   B. On: that is the staged snapshot.
+   C. Git cannot commit a file edited twice.
+ANSWER: B — On: that is the staged snapshot.
+WHY: git add captures the content at that moment. Later edits do not automatically update the index.
+
+5. What is a branch?
+Section: Branches and merges
+   A. A physical duplicate project folder.
+   B. A movable reference identifying a line of development.
+   C. A special GitHub account.
+ANSWER: B — A movable reference identifying a line of development.
+WHY: A branch points to a commit. HEAD normally identifies the active branch; new commits advance its pointer.
+
+6. Which changes need a merge decision?
+Section: Branches and merges
+   A. One branch edits lighting; another edits sensors.
+   B. Both branches choose different values for the same tyre line.
+   C. Two branches make the identical change.
+ANSWER: B — Both branches choose different values for the same tyre line.
+WHY: Incompatible overlapping edits need a decision. Independent or identical changes can generally combine.
+
+7. Does a local commit automatically update GitHub?
+Section: GitHub collaboration
+   A. Yes, immediately.
+   B. No: sharing recorded commits requires a push.
+   C. Only on main.
+ANSWER: B — No: sharing recorded commits requires a push.
+WHY: The local and remote repositories are distinct. git push transfers commits and updates remote references.
+
+8. Which is a Git command?
+Section: GitHub collaboration
+   A. Open a pull request.
+   B. Approve a review.
+   C. git push
+ANSWER: C — git push
+WHY: Pull requests and review are platform collaboration features. git push is a Git command.
+
+9. What does a normal commit save?
+Section: Exit quiz
+   A. The selected staged snapshot and its metadata.
+   B. Every file on your computer.
+   C. Only a description, without file contents.
+ANSWER: A — The selected staged snapshot and its metadata.
+WHY: The index determines the snapshot; the commit also records parents and metadata.
+
+10. How should you resolve the tyre conflict?
+Section: Exit quiz
+   A. Always take our version.
+   B. Choose the content that satisfies the track requirement, then stage and finish the merge.
+   C. Delete the repository and begin again.
+ANSWER: B — Choose the content that satisfies the track requirement, then stage and finish the merge.
+WHY: Git cannot decide project intent. Requirements guide the correct combined content.
+
+11. Which collaboration order matches the workshop?
+Section: Exit quiz
+   A. Push → edit → review → commit.
+   B. Branch → edit/stage/commit → push → PR/review → merge → synchronize.
+   C. Review → merge → create a branch.
+ANSWER: B — Branch → edit/stage/commit → push → PR/review → merge → synchronize.
+WHY: Recorded contributions are shared, reviewed and integrated before local main is synchronized.
+
+============================================================
+2. ALL GUIDED PRACTICAL EXERCISES
+============================================================
+
+A. TERMINAL INSPECTION — topic 8
+Starting context: prepared plain folder; terminal starts in /workshop.
+
+pwd
+ls
+cd garage-to-grid
+ls
+cat README.md
+
+Expected answers:
+- pwd first prints /workshop.
+- ls reveals the garage-to-grid folder.
+- cd changes the current folder; it does not read a file.
+- cat displays README.md; it does not change that file.
+- ls -a also reveals hidden filenames such as .gitignore.
+Goal: enter the project folder.
+
+B. INITIALIZE A REPOSITORY — topic 9; continues exercise A
+
+git init -b main
+git status
+git help status
+
+Expected answers:
+- main exists, but has no commits yet.
+- Supplied files are initially untracked.
+- git init alone does not save file content.
+- git log cannot show history until there is a first commit.
+
+C. FIRST SNAPSHOT — topic 10; continues A/B
+
+git add .
+git commit -m "Save starting prototype"
+git status
+
+Expected answers:
+- All supplied baseline files, including .gitignore, are recorded.
+- The first commit has no parent.
+- The index and HEAD agree; tracked working files are clean.
+- git add * stages visible names; it does not include hidden .gitignore.
+  For this baseline, use git add . or add .gitignore explicitly too.
+
+D. INSPECT AND SAVE A LIGHTING REPAIR — topics 11/12; same repository
+In the editor, replace lighting.cfg with:
+headlights=on
+
+Then:
+git status
+git diff
+git add lighting.cfg
+git diff --staged
+git commit -m "Enable headlights"
+
+Expected answers:
+- Working preview: lights turn on immediately after editing.
+- Index preview: lights turn on after staging.
+- HEAD preview: lights turn on after committing.
+- An ordinary commit saves staged content, not every latest working edit.
+- A local commit does not update a remote.
+Alternative after inspecting: git commit -am "Enable headlights"
+This works because lighting.cfg is already tracked.
+
+E. SELECTIVE STAGING — topic 13; independent staging repository
+Set lighting.cfg to:
+headlights=on
+
+Set steering.cfg to:
+response=reversed
+
+Then:
+git status
+git diff
+git add lighting.cfg steering.cfg
+git restore --staged steering.cfg
+git diff --staged
+git commit -m "Enable headlights without changing steering"
+
+Expected saved result:
+lighting.cfg: headlights=on
+steering.cfg: response=calibrated
+
+Expected working result:
+lighting.cfg: headlights=on
+steering.cfg: response=reversed
+
+The unrelated steering edit remains available but is excluded from this commit.
+Unchanged tracked files remain part of the full snapshot.
+Alternative unstage: git reset HEAD -- steering.cfg
+Do not use commit -am here: it would include the unwanted steering edit too.
+
+F. IGNORE GENERATED TELEMETRY — topic 13; continues E
+Keep any comments in .gitignore and add this line:
+*.log
+
+Then:
+git status
+git add .gitignore
+git commit -m "Ignore generated telemetry"
+
+Expected answers:
+- Untracked telemetry.log disappears from ordinary status output.
+- telemetry.log is not recorded in the commit.
+- The ignore rule itself is tracked.
+- An ignore rule does not stop tracking an already tracked file.
+- Steering may still be modified from exercise E; that is expected.
+Do not use add . or commit -am here if the unrelated steering edit should remain
+outside the ignore-rule commit.
+
+G. READ HISTORY — topic 15; independent recovery repository
+
+git log --oneline
+git log --oneline --graph --all --decorate
+git show HEAD
+git show a000001:steering.cfg
+
+Expected answers:
+- a000002 changed steering to response=reversed.
+- a000001 contains response=calibrated.
+- show/log inspect history without changing working files.
+- HEAD normally identifies the current branch's tip.
+- Parents explain the commit graph; a merge may have two parents.
+
+H. RECOVER A HISTORICAL FILE — topic 16 recovery practice
+
+git restore --source a000001 -- steering.cfg
+
+Expected result: working steering.cfg contains response=calibrated.
+History and the current commit stay unchanged. The index still contains the
+current tip's reversed setting until the recovered file is staged.
+
+Equivalent forms in this prepared history:
+git restore --source=HEAD~1 -- steering.cfg
+git checkout HEAD^ -- steering.cfg
+
+Difference: checkout with an explicit commit restores the working file AND
+stages that historical content; restore without --staged changes working content.
+
+To save recovery:
+git add steering.cfg
+git commit -m "Recover steering calibration"
+
+To demonstrate ordinary restore BEFORE saving recovery:
+git restore steering.cfg
+
+Expected: working content returns to the INDEX version. If the index still has
+reversed steering, ordinary restore returns reversed, not calibrated.
+
+I. REVERT DEMONSTRATION — topic 16, separate revert practice frame
+Use the separately prepared clean revert repository, not dirty recovery work.
+
+git log --oneline
+git revert HEAD
+git log --oneline
+
+Expected answers:
+- A new corrective commit restores calibrated steering.
+- The previous bad commit remains in history.
+- Revert is not deletion or rewriting of the earlier commit.
+- Its new commit has the earlier bad tip as its parent.
+
+J. BRANCH PREDICTION — topic 17; independent branch repository
+
+git branch
+git branch cockpit
+git branch
+
+Expected answers:
+- Creating cockpit does not switch the active branch.
+- Initially cockpit points to the same commit as main.
+- File contents and the car do not change just because a branch is created.
+- A branch is a movable reference, not a duplicated project directory.
+
+K. DASHBOARD EXPERIMENT AND INTEGRATION — topics 18/19; same branch repository
+
+git switch -c cockpit-display
+
+Set dashboard.cfg to:
+enabled=on
+
+Then:
+git add dashboard.cfg
+git commit -m "Enable dashboard"
+git switch main
+
+Expected: main still has its original disabled dashboard; the upgrade is saved
+on cockpit-display. Select that branch in Preview to compare versions.
+
+Now integrate:
+git merge cockpit-display
+
+Expected: main includes the dashboard upgrade. This route is a fast-forward.
+Alternative branching: git checkout -b cockpit-display
+Alternative switching: git checkout main
+Alternative integration: git merge --no-ff cockpit-display
+The --no-ff alternative creates a two-parent merge commit.
+
+L. LOCAL TYRE CONFLICT — topic 20; independent conflict repository
+
+git merge tyre-plan
+
+Expected: tyres.cfg conflicts. Main chose wet; tyre-plan chose slicks; the shared
+baseline was dry. The wet track requires wet tyres.
+
+Replace all of tyres.cfg with:
+compound=wet
+
+Then:
+git add tyres.cfg
+git commit -m "Resolve tyres for the wet track"
+
+Expected: no active merge, no conflict markers, wet tyres, two commit parents.
+Alternative resolution:
+git checkout --ours -- tyres.cfg
+git add tyres.cfg
+git commit --no-edit
+
+Here --ours is correct because this prepared main already chose wet. In general,
+choose using requirements rather than automatically trusting one side.
+
+Optional abort demonstration, while the conflict is still unresolved:
+git merge --abort
+
+Expected: the pre-merge state is restored. Retry the merge before resolving it.
+
+M. LOCAL/REMOTE, FETCH, PUSH, REVIEW AND SYNC — topics 22–25
+This independent remote demo starts with a prepared, repaired race-ready branch.
+The car is already ready for the proposal; a fresh clone is unnecessary here.
+
+git remote -v
+git fetch origin
+git push -u origin race-ready
+
+Expected answers:
+- origin is the configured remote name.
+- Fetch updates remote-tracking references, not working files.
+- Push transfers recorded commits, not unstaged edits.
+- -u establishes the upstream for later shorthand push/pull.
+- A fork is a hosted repository copy; clone creates a local working copy.
+
+In the website GitHub pane:
+1. Overview -> Open pull request.
+2. Diff -> inspect the pushed changes.
+3. Review -> inspect the checks -> Complete simulated review.
+4. Merge reviewed proposal.
+
+Then:
+git switch main
+git pull --ff-only origin main
+git status
+
+Expected: local main matches accepted remote main; tracked files are clean.
+A PR, review, and issue are GitHub collaboration features, not Git commands.
+Alternative synchronization: git fetch origin, then git merge origin/main.
+
+============================================================
+3. SIX MAIN MISSIONS — CANONICAL SOLUTIONS
+============================================================
+
+MISSION 1. Receive and investigate
+
+git clone https://github.com/workshop-demo/garage-to-grid.git
+cd garage-to-grid
+git status
+git remote -v
+git log --oneline
+git show a000001:steering.cfg
+
+The earlier blueprint contains response=calibrated. The current tip changed it to response=reversed. Clone does not automatically enter the created folder.
+
+MISSION 2. Restore essentials on a working branch
+
+git switch -c race-ready
+git restore --source a000001 -- steering.cfg
+
+In the file editor, set lighting.cfg to:
+
+headlights=on
+
+Then:
+
+git diff
+git add lighting.cfg steering.cfg
+git diff --staged
+git commit -m "Restore lights and steering"
+
+Compare Working, Index and HEAD. Main stays at the original baseline during the repair. Restoring a file changes working content; the subsequent add/commit records it.
+
+MISSION 3. Develop and integrate the cockpit
+
+git switch -c cockpit-display
+
+Set dashboard.cfg to enabled=on, then:
+
+git add dashboard.cfg
+git commit -m "Enable cockpit instruments"
+git switch race-ready
+git merge cockpit-display
+
+This integration is a fast-forward. A branch is a reference, not a separate physical folder.
+
+MISSION 4. Integrate the pit crew
+
+git fetch origin
+git log --all --oneline --graph
+git merge origin/pit-crew
+
+Fetch brings knowledge of the prepared contribution into the local repository. The working sensors remain off until integration. The merge combines independent file changes and records two parents.
+
+MISSION 5. Resolve the tyre disagreement
+
+Set tyres.cfg to compound=wet, then:
+
+git add tyres.cfg
+git commit -m "Choose wet-track tyres"
+git fetch origin
+git merge origin/tyre-plan
+
+The shared baseline had dry tyres. Your contribution chose wet; the remote plan chose slicks. Inspect the conflict markers and choose the track requirement.
+
+Replace the conflicted file content with exactly:
+
+compound=wet
+
+Remove all marker lines and the duplicate alternative. If the editor has multiple file sections, inspect each section rather than leaving marker text elsewhere.
+
+git add tyres.cfg
+git commit -m "Resolve tyres for wet conditions"
+
+The merge commit has two parents. git merge --abort before finishing would return to pre-merge state. Git itself can record marker text after it is staged; the vehicle checks catch that unfinished repair.
+
+MISSION 6. Review, merge and synchronize
+
+git push -u origin race-ready
+
+In the GitHub pane:
+
+1. Overview → Open pull request.
+2. Diff → page through the pushed changes.
+3. Review → inspect checks → Complete simulated review.
+4. Merge reviewed proposal.
+
+Then:
+
+git switch main
+git pull --ff-only origin main
+
+Local main now matches remote main. The final grid frame becomes available: run the final lap. The correct car has lights on, calibrated steering, dashboard enabled, obstacle detection on, and wet tyres.
+
+Uncommitted edits cannot enter the pushed proposal. Pushing a new recorded version invalidates its earlier review. The PR's diff remains inspectable after merging.
+
+
+============================================================
+4. COMPLETE ALTERNATIVE SIX-MISSION SOLUTION
+============================================================
+
+Use this as a separate attempt from the beginning, not after the canonical route.
+This illustrates that the terminal accepts different valid command forms.
+Commands are grouped by mission. Press Continue after each mission's checks pass
+so that the next prepared remote contribution becomes available.
+
+MISSION 1 — investigate
+
+git clone https://github.com/workshop-demo/garage-to-grid.git
+cd ./garage-to-grid
+git status -s
+git remote
+git log --oneline
+git show HEAD^:steering.cfg
+
+Expected historical clue: response=calibrated.
+Continue to mission 2.
+
+MISSION 2 — repair using terminal file edits and commit -a
+
+git checkout -b repairs/lights
+echo response=calibrated > steering.cfg
+echo headlights=on > lighting.cfg
+git commit -am "Repair essentials"
+
+Expected: both repairs saved on repairs/lights; main remains at the baseline.
+Continue to mission 3.
+
+MISSION 3 — feature branch and an explicit merge commit
+
+git checkout -b feature/dashboard
+echo enabled=on > dashboard.cfg
+git add *.cfg
+git commit --message="Dashboard"
+git checkout repairs/lights
+git merge --no-ff feature/dashboard
+
+Expected: dashboard contribution is recorded separately and integrated into the
+working branch; the explicit merge commit has two parents.
+Continue to mission 4.
+
+MISSION 4 — pull combines fetch and integration
+
+git pull --no-rebase origin pit-crew
+
+Expected: actual pit-crew history is integrated; sensors are on.
+Merely editing sensors.cfg yourself does not integrate the teammate's history.
+Continue to mission 5.
+
+MISSION 5 — resolve the conflict by choosing the correct existing side
+
+echo compound=wet > tyres.cfg
+git commit -am "Wet setup"
+git pull origin tyre-plan
+
+Expected: a conflict, because the incoming branch chose slicks.
+
+git checkout --ours -- tyres.cfg
+git add -u
+git commit --no-edit
+
+Expected: wet tyres, valid configuration, completed merge and integrated incoming
+history. You could instead edit the conflicted file or use restore --ours.
+Continue to mission 6.
+
+MISSION 6 — push using HEAD and synchronize with fetch plus merge
+
+git push --set-upstream origin HEAD
+
+Website GitHub pane:
+- Open the pull request for repairs/lights.
+- Inspect its diff and vehicle checks.
+- Complete the simulated review.
+- Merge the reviewed proposal.
+
+Then:
+git checkout main
+git fetch
+git merge origin/main
+
+Expected: local main equals remote main, all five checks pass, tracked state clean.
+Finish with the final test lap.
+
+OTHER ACCEPTABLE FORMS AND THEIR MEANING
+- git add .: stage eligible changes, including hidden filenames.
+- git add *: shell expands visible filenames. Hidden files need explicit staging.
+- git add '*.cfg': Git receives a quoted wildcard pathspec.
+- git add -A: stage additions, tracked modifications and deletions.
+- git add -u: stage tracked modifications/deletions; do not add new untracked files.
+- git commit -am "Message": update tracked content and commit it. New untracked
+  files still need git add.
+- git reset HEAD -- file: unstage while preserving working content.
+- git restore --source=HEAD~1 -- file: recover parent snapshot into working content.
+- git checkout HEAD^ -- file: recover first-parent content into working AND index.
+- git push: shorthand after an upstream has been configured.
+- git pull: shorthand integration from the configured upstream.
+- git add . && git commit -m "Repair": commit only if add succeeds.
+- echo value > file: replace virtual file content; >> appends.
+- printf '%s\n' value > file: write a value followed by a newline.
+
+============================================================
+5. OPTIONAL REAL GIT/GITHUB LAB — TOPICS 38–40
+============================================================
+
+These commands belong in a real terminal, not the website simulation.
+Use the provided starter download and a prepared GitHub account/repository.
+Substitute actual names, email, and repository URL. No real repository credentials
+belong in this answer sheet.
+
+A. PREPARATION
+
+git --version
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+Enter the extracted starter folder using its actual path. If it is named
+garage-to-grid and you are in its parent folder:
+cd garage-to-grid
+
+B. RECORD THE REAL BASELINE
+
+git init -b main
+git status
+git add .
+git commit -m "Save prototype"
+git log --oneline
+
+C. MAKE A FEATURE REPAIR
+
+git switch -c feature/lights
+
+Edit lighting.cfg so it contains:
+headlights=on
+
+Then:
+git diff
+git add lighting.cfg
+git diff --staged
+git commit -m "Enable inspection lights"
+
+Expected: feature/lights contains the repair; main still contains the baseline.
+
+D. SHARE WITH A PREPARED EMPTY GITHUB REPOSITORY
+Use an empty repository for this simple recipe. If it already contains commits,
+inspect/integrate its history rather than force-pushing this example over it.
+
+git remote add origin <actual-repository-url>
+git remote -v
+git switch main
+git push -u origin main
+git switch feature/lights
+git push -u origin feature/lights
+
+If origin already exists, inspect it rather than adding the same name again.
+Authentication must already be ready through the student's configured GitHub
+method; do not use an account password as Git push authentication.
+
+E. REVIEW AND MERGE IN REAL GITHUB
+- Open a pull request: base main; compare feature/lights.
+- Inspect the changed lighting.cfg file and the description.
+- Ask a partner to review if available; discuss intent and scope.
+- Merge the pull request.
+
+F. SYNCHRONIZE
+
+git switch main
+git pull --ff-only origin main
+git status
+git log --oneline --graph --all --decorate
+
+Expected: main includes the reviewed lighting repair; tracked state is clean.
+Actual IDs and messages may differ from the simulation. The optional real lab's
+single-file exercise is distinct from the five-repair main mission.
+
+============================================================
+6. FINAL CONFIGURATION AND TROUBLESHOOTING ANSWERS
+============================================================
+
+MAIN MISSION FINAL CONFIGURATION
+lighting.cfg:
+headlights=on
+
+steering.cfg:
+response=calibrated
+
+dashboard.cfg:
+enabled=on
+
+sensors.cfg:
+obstacle_detection=on
+
+tyres.cfg:
+compound=wet
+
+EXPECTED FINAL REPOSITORY STATE
+- Current branch: main.
+- Local main and remote main identify the accepted release.
+- The actual feature and pit-crew contributions were integrated.
+- No unfinished merge or conflict markers remain.
+- Working and staged tracked content match the accepted commit.
+- The pushed proposal was reviewed and merged.
+- All five vehicle checks pass; the final lap succeeds.
+
+COMMON QUESTIONS
+
+"File not found: *"
+Refresh the deployed website to load the wildcard-compatible release. git add *
+now expands visible filenames. git add . is also a valid broad staging command.
+
+"Ignored paths: telemetry.log"
+An unquoted * can expand to an explicitly ignored file. As in real Git, other
+selected files may be staged while that ignored path is rejected. Inspect status.
+Prefer git add . or *.cfg for source changes. -f deliberately includes ignored
+files, which is usually unsuitable for this workshop's generated telemetry.
+
+"Nothing staged to commit"
+Use git status. Stage the intended content, or use commit -am for tracked edits.
+A new untracked file still requires add even when using commit -a.
+
+"My working car looks right but the mission is not complete"
+Compare Working, Index and HEAD previews. The repair must be committed. For
+integration missions, the actual incoming history must be included; manually
+copying a teammate's setting is not the same as integrating their branch.
+
+"The historical restore did not make a new commit"
+Expected: restore changes selected content. Add and commit to record the repair.
+
+"Switch would overwrite a file"
+Preserve the edit by committing it, or restore it only if it is unwanted.
+Switching should not silently discard incompatible local changes.
+
+"Push rejected: non-fast-forward"
+Fetch and inspect the incoming history, integrate it, resolve any conflicts,
+then push again. Do not force-push as a shortcut for this exercise.
+
+"Fast-forward pull rejected"
+The histories diverged. --ff-only intentionally refuses a merge. Inspect the
+fetched references and integrate deliberately with merge (or a normal merge-based
+pull supported in the workshop), resolving conflicts before committing.
+
+"The GitHub proposal does not include my latest working edits"
+Expected: proposals use pushed commits. Edit -> add -> commit -> push, then review
+the latest pushed version. Pushing another version invalidates its earlier review.
+
+"I merged the PR but my local car did not update"
+The remote changed first. Switch local main, then pull, or fetch and merge origin/main.
+
+"I committed the conflict markers"
+Git can record text containing markers. A successful commit alone is not proof of
+a correct repair. Replace the entire conflicted file with the correct setting,
+then stage and commit the correction; the vehicle configuration must be valid.
+
+"Can every real Git or operating-system command run here?"
+No. This is a virtual workshop environment with a broader supported command set.
+Pipes, general system programs and advanced Git operations such as rebase/stash/
+history-reset are outside this implementation. Use the optional real lab for those
+operations, with an appropriate separate exercise.
+
+END OF COMPLETE ANSWER SHEET

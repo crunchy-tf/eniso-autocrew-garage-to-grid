@@ -1,0 +1,505 @@
+[
+  {
+    "number": 1,
+    "title": "Welcome to Autocrew: Garage to Grid",
+    "minutes": 3,
+    "fields": {
+      "See": "the race prototype in a 3D garage, workshop title, ENISO/Autocrew text branding, and the journey from garage to starting grid. On the SAME welcome screen, show **Ayoub Dhaouadi — Software Engineer · M2 Research Master’s Student at ENIT**, with **Signals, Systems and Data** beneath. Include [LinkedIn](https://www.linkedin.com/in/ayoub-dhaouadi-eng/) and [GitHub](https://github.com/crunchy-tf) buttons opening new tabs. All essential instructor details are initially visible; an About panel repeats them later.",
+      "Explain": "by the end, students will record changes, work on branches, resolve a conflict, and submit reviewed work. The car makes file changes visible.",
+      "Do": "open the same student URL/QR; select student mode and check that the page loads. Orbit the car or choose a camera preset. Pair up if useful.",
+      "Result": "everyone can access the workshop; no GitHub account or installation is needed for the core session."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 2,
+    "title": "Which “final” project is actually final?",
+    "minutes": 3,
+    "fields": {
+      "See": "`car-final`, `car-final-v2`, and `car-final-REAL`, each with a different vehicle preview and a contradictory change.",
+      "Explain": "names alone do not establish which version is correct or why it changed.",
+      "Do": "predict which evidence would help: author, change description, earlier versions, and review.",
+      "Result": "students encounter the problem version control solves before memorizing commands."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 3,
+    "title": "Snapshots and Git's basic model",
+    "minutes": 4,
+    "fields": {
+      "See": "a project's development as labelled snapshots, with who/what/why information. An exploded diagram connects file contents (blobs), folder structure (trees), and a commit containing a snapshot reference, parents, author, and message.",
+      "Explain": "version control records development and supports comparison, recovery, and collaboration. Real Git objects have content-derived IDs; saved commits are immutable. A later correction creates another commit. Explain these visually, without cryptographic calculations or plumbing commands.",
+      "Do": "identify which information was missing from the previous screen.",
+      "Result": "a repository records snapshots and their relationships; the command interface will manipulate that model."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 4,
+    "title": "Git's origin story",
+    "minutes": 3,
+    "fields": {
+      "See": "a short Linux → BitKeeper → Git timeline, highlighting 2002 and 2005.",
+      "Explain": "Linux development needed to coordinate many contributions. After the BitKeeper relationship broke down in 2005, the community, especially Linus Torvalds, developed Git with speed, distributed work, and branching among its goals.",
+      "Do": "predict why local history and parallel development matter for a large team.",
+      "Result": "Git's design serves concrete collaboration needs."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 5,
+    "title": "GitHub joins the story",
+    "minutes": 1,
+    "fields": {
+      "See": "Git's 2005 marker followed by GitHub's public launch on 10 April 2008; a local repository connected to a hosted collaboration space.",
+      "Explain": "GitHub hosts Git repositories and adds ways to discuss, review, and collaborate on work.",
+      "Do": "connect the garage team's need for review with a hosting platform.",
+      "Result": "Git and GitHub have different jobs and different histories."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 6,
+    "title": "Git versus GitHub",
+    "minutes": 1,
+    "fields": {
+      "See": "a direct comparison: Git manages version history; GitHub provides online hosting/collaboration.",
+      "Explain": "commits are usually local. Sharing with a hosted remote is a separate action. Other Git hosting platforms also exist.",
+      "Do": "sort “save a commit” and “open a pull request” into the appropriate categories.",
+      "Result": "students distinguish the tool from the platform."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 7,
+    "title": "Origin-story checkpoint",
+    "minutes": 1,
+    "fields": {
+      "See": "two quick quiz cards.",
+      "Do": "answer “Can you create a Git commit offline?” (**yes**) and “Which statement is accurate?” (**Git tracks versions; GitHub supports hosted collaboration**).",
+      "Explain/result": "show the reason for each option and allow a retry. No speed score or public ranking."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 8,
+    "title": "Your first terminal inspection",
+    "minutes": 4,
+    "fields": {
+      "See": "a safe virtual terminal starting in `/workshop`, with a prepared `garage-to-grid` folder.",
+      "Do": "run `pwd`, `ls`, `cd garage-to-grid`, `ls`, and `cat README.md` with short explanations beside each command.",
+      "Explain": "current directory, folders/files, and the difference between entering a folder and reading a file. Use the website editor for changes.",
+      "Result": "students can find the project without needing broader shell knowledge. This is drill 1."
+    },
+    "context": "inspect",
+    "optional": false
+  },
+  {
+    "number": 9,
+    "title": "Create your first repository",
+    "minutes": 3,
+    "fields": {
+      "See": "the prepared plain project files beside the car, followed by an initialized repository with unborn main and no saved commits yet.",
+      "Explain": "these configuration files describe the prototype. `git init -b main` starts a repository and names its initial branch; `.git` holds Git's internal data. Briefly show the real Git identity setup commands as preparation guidance; this simulator uses its prepared author identity.",
+      "Do": "run `git init -b main` in the folder entered on s08. Select `lighting.cfg` and read `headlights=off`. Learn where `git help <command>` and the reference drawer are available.",
+      "Result": "the repository exists but its files remain untracked until selected and recorded. Do not create the initial commit silently."
+    },
+    "context": "inspect",
+    "optional": false
+  },
+  {
+    "number": 10,
+    "title": "Working files, staging area, saved commit",
+    "minutes": 5,
+    "fields": {
+      "See": "three labelled states with one file travelling through them and a vehicle preview for the selected version.",
+      "Explain": "editing changes working files; staging selects content for a snapshot; committing records that snapshot.",
+      "Do": "predict whether an edit alone is a commit. After the three states are explained, create the baseline with `git add .` and `git commit -m \"Save starting prototype\"`. All supplied baseline files belong to this initial snapshot.",
+      "Result": "students understand the three states as distinct."
+    },
+    "context": "inspect",
+    "optional": false
+  },
+  {
+    "number": 11,
+    "title": "Ask Git what changed",
+    "minutes": 3,
+    "fields": {
+      "See": "an edit from `headlights=off` to `headlights=on`; the light turns on in the working preview.",
+      "Do": "run `git status` and `git diff`.",
+      "Explain": "status summarizes the situation; diff reveals changed content. The scene responds to the file, not to the inspection command.",
+      "Result": "students inspect before recording a change."
+    },
+    "context": "inspect",
+    "optional": false
+  },
+  {
+    "number": 12,
+    "title": "Stage and save the repair",
+    "minutes": 4,
+    "fields": {
+      "Do": "run `git add lighting.cfg`, `git diff --staged`, and `git commit -m \"Enable headlights\"`.",
+      "See": "the staged snapshot, then a new commit in the graph. Inspect the saved vehicle preview.",
+      "Explain": "a useful commit message describes a focused change.",
+      "Result": "the lighting repair is recorded; committing did not automatically share it online."
+    },
+    "context": "inspect",
+    "optional": false
+  },
+  {
+    "number": 13,
+    "title": "Mini exercises: selective staging and ignore logs",
+    "minutes": 8,
+    "fields": {
+      "See": "a separate drill repository with lighting and steering edits, a tracked `.gitignore`, and an untracked generated `telemetry.log`.",
+      "Do": "first inspect status/diff and stage both edited configuration files. Use `git restore --staged steering.cfg` to remove the unrelated edit from the index while preserving its working content; commit only the lighting repair. Then add `*.log` to `.gitignore`, inspect status, stage the ignore rule, and commit it. Use roughly four minutes for each part.",
+      "Explain": "select intended content. Distinguish tracked, untracked, modified, staged, and ignored files. `.gitignore` excludes matching untracked generated files; it does not remove an already tracked file or erase prior history.",
+      "Result": "the repair is focused, the unrelated edit remains available, and generated telemetry stays outside version history. This is drill 2, with two short parts."
+    },
+    "context": "staging",
+    "optional": false
+  },
+  {
+    "number": 14,
+    "title": "The staging trap",
+    "minutes": 3,
+    "fields": {
+      "See": "a file staged with `headlights=on`, then edited back to `off` before committing.",
+      "Do": "answer two questions: which edited files are committed (**the staged content**) and what happens after another edit following `git add` (**the staged version remains until staged again**).",
+      "Explain": "compare Working: Off, Index: On, and Commit: On after the commit.",
+      "Result": "students understand that staging captures a version, not an ongoing promise to include future edits."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 15,
+    "title": "Read the car's history",
+    "minutes": 4,
+    "fields": {
+      "See": "a commit timeline with messages, IDs, and selectable snapshots.",
+      "Do": "run `git log --oneline` and `git show <commit-id>` using an actual displayed simulation ID. Demonstrate `git log --oneline --graph --all --decorate` and relate it to the clickable graph.",
+      "Explain": "a commit identifies a saved snapshot. History is a directed acyclic graph of parent relationships; merges can have two parents. Inspection changes neither working files nor the current branch.",
+      "Result": "students can find evidence about an earlier change."
+    },
+    "context": "recovery",
+    "optional": false
+  },
+  {
+    "number": 16,
+    "title": "Recover a file and understand undo",
+    "minutes": 4,
+    "fields": {
+      "See": "a prototype that steers incorrectly and a few earlier commits.",
+      "Do": "in an independent recovery drill, inspect history to find where `calibrated` changed to `reversed`; preview the earlier configuration; run `git restore --source <good-commit> -- steering.cfg`. Show `git restore <file>` for restoring working content from the index. Use a SEPARATE prepared demonstration repository for `git revert <bad-commit>` so the revert starts from clean state.",
+      "Explain": "restore changes selected file content without moving history. `git restore --staged` affects the index; a normal restore affects working files. A revert records a new corrective commit and preserves the earlier commit. Keep history-rewriting reset/amend as optional reference topics.",
+      "Result": "students recover a historical file and distinguish file recovery from reversing committed work. This is drill 3, with a short instructor revert demonstration."
+    },
+    "context": "recovery",
+    "optional": false
+  },
+  {
+    "number": 17,
+    "title": "A branch is a line of development",
+    "minutes": 4,
+    "fields": {
+      "See": "a commit graph with main and a feature branch pointing to commits; compare baseline and experimental snapshots.",
+      "Explain": "a branch is a mutable reference to a commit; HEAD normally points to the current branch. Committing advances that branch; switching changes where HEAD points. A branch is not a physical duplicate folder. A new branch initially identifies the same commit. Show `git branch` and `git branch <name>` alongside the create-and-switch shortcut used next.",
+      "Do": "predict what changes immediately after creating a branch.",
+      "Result": "students understand branch identity before making an upgrade."
+    },
+    "context": "branch",
+    "optional": false
+  },
+  {
+    "number": 18,
+    "title": "Mini exercise: dashboard experiment",
+    "minutes": 4,
+    "fields": {
+      "Do": "`git switch -c cockpit-display`; edit `dashboard.cfg` to `enabled=on`; add/commit; switch back to main.",
+      "See": "the active dashboard in the feature version and the unchanged baseline on main.",
+      "Explain": "the branch owns a recorded development path; switching selects another version.",
+      "Result": "the upgrade exists independently. This is drill 4."
+    },
+    "context": "branch",
+    "optional": false
+  },
+  {
+    "number": 19,
+    "title": "Merge a finished upgrade",
+    "minutes": 3,
+    "fields": {
+      "Do": "from main, run `git merge cockpit-display`.",
+      "See": "the dashboard appears on main and its pointer advances. This example is a fast-forward.",
+      "Explain": "a merge integrates another development path; some integrations simply move a branch forward.",
+      "Result": "students connect merge output with both the graph and vehicle."
+    },
+    "context": "branch",
+    "optional": false
+  },
+  {
+    "number": 20,
+    "title": "A conflict is a decision to make",
+    "minutes": 4,
+    "fields": {
+      "See": "a prepared local conflict drill: one contribution chooses wet tyres, another slicks, with dry tyres as their shared baseline.",
+      "Do": "merge the prepared branch; inspect the markers; choose `compound=wet` for the shown wet track; remove markers; stage and commit. Show `git merge --abort` as a way to return to pre-merge state before retrying.",
+      "Explain": "decide using the project's requirement. Git does not know which tyre setting suits the event.",
+      "Result": "the merge completes and the configuration becomes valid. This is drill 5; instructor and students can resolve it together."
+    },
+    "context": "conflict",
+    "optional": false
+  },
+  {
+    "number": 21,
+    "title": "Branch and merge checkpoint",
+    "minutes": 3,
+    "fields": {
+      "Do": "answer two questions: why create a branch (**develop work separately**) and which example needs conflict resolution (**incompatible edits to the same overlapping content**).",
+      "See": "an independent-file example alongside the conflicting tyre line.",
+      "Result": "students explain the distinction, rather than assuming every merge conflicts."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 22,
+    "title": "Your repository and the remote",
+    "minutes": 3,
+    "fields": {
+      "See": "two distinct repository diagrams, local and hosted, linked by directional operations.",
+      "Explain": "`origin` is a conventional remote name. Inspect it with `git remote -v`. Local main, a remote-tracking reference, and remote main can identify different versions; `-u` later establishes upstream correspondence.",
+      "Do": "predict whether saving a local commit changes the remote automatically.",
+      "Result": "students can reason about where work currently exists."
+    },
+    "context": "remote",
+    "optional": false
+  },
+  {
+    "number": 23,
+    "title": "Clone versus fetch",
+    "minutes": 3,
+    "fields": {
+      "See": "cloning creates a local copy; later fetching updates its knowledge of the remote.",
+      "Do": "follow short demonstrations of `git clone <repository-url>` and `git fetch origin`.",
+      "Explain": "fetch does not apply those changes to working files. A GitHub fork creates a hosted repository copy; clone creates a working copy. The workshop URL is illustrative and handled by the simulation.",
+      "Result": "students distinguish getting a repository from getting updates."
+    },
+    "context": "remote",
+    "optional": false
+  },
+  {
+    "number": 24,
+    "title": "Push and pull",
+    "minutes": 3,
+    "fields": {
+      "See": "committed work travelling toward the remote; an accepted remote update later reaching the current local branch.",
+      "Do": "follow `git push -u origin <branch>` and `git pull --ff-only origin main` examples.",
+      "Explain": "push shares commits; uncommitted edits remain local. This workshop uses a fast-forward-only pull path and explains divergence errors.",
+      "Result": "students understand sharing and synchronization as separate actions."
+    },
+    "context": "remote",
+    "optional": false
+  },
+  {
+    "number": 25,
+    "title": "A pull request invites review",
+    "minutes": 4,
+    "fields": {
+      "See": "a simulated GitHub panel with base/head branches, proposed diff, vehicle checks, and review status.",
+      "Do": "inspect a proposal, request/complete the prepared review, and merge it remotely.",
+      "Explain": "an issue describes work or a problem; a pull request proposes a change for review. A pull request is a hosting-platform feature, not a `git` command. Review examines the pushed snapshot.",
+      "Result": "students see how feedback precedes integration."
+    },
+    "context": "remote",
+    "optional": false
+  },
+  {
+    "number": 26,
+    "title": "Collaboration checkpoint",
+    "minutes": 2,
+    "fields": {
+      "Do": "answer whether a local commit automatically updates GitHub (**no**) and identify the Git command among `git push` and opening a pull request (**git push**).",
+      "See": "explanations and the complete branch → commit → push → review → merge → synchronize sequence.",
+      "Result": "the core eight quiz questions are complete."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 27,
+    "title": "Pit break and command reference",
+    "minutes": 5,
+    "fields": {
+      "See": "agenda, compact command reference, and readiness check.",
+      "Do": "take the break; revisit a drill or consult the reference if needed.",
+      "Result": "begin the long mission together after the instructor's cue."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 28,
+    "title": "Mission briefing",
+    "minutes": 2,
+    "fields": {
+      "See": "a dark garage, wet test track, marked obstacle, six mission checkpoints, and a prototype with failed checks.",
+      "Explain": "repair the car on a working branch, integrate contributions, and submit reviewed work. The older steering setting is a clue. Demonstrate the hint ladder without revealing the whole solution.",
+      "Do": "start the main mission; choose individual or pair work.",
+      "Result": "a fresh main repository context, separate from all drills."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 29,
+    "title": "Mission 1: receive and investigate",
+    "minutes": 4,
+    "fields": {
+      "Do": "clone the illustrative repository; `cd garage-to-grid`; inspect files/status/`git remote -v`/log; show the relevant historical commit.",
+      "See": "the baseline car and a labelled historical preview with correct steering.",
+      "Completion": "a local repository exists and the earlier correct setting has been inspected. Cloning does not automatically enter its directory."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 30,
+    "title": "Mission 2: restore essentials",
+    "minutes": 9,
+    "fields": {
+      "Do": "create a working branch, suggested `race-ready`; recover steering with `git restore --source <discovered-good-commit> -- steering.cfg`; set headlights on; inspect diff; stage the two files; commit the repair.",
+      "See": "headlight beams and a passing steering test; the saved repair appears in the graph.",
+      "Completion": "correct lighting/steering content is committed on a working branch, with a diff inspection recorded. The main branch remains the baseline."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 31,
+    "title": "Mission 3: develop the cockpit",
+    "minutes": 8,
+    "fields": {
+      "Do": "create a feature branch; enable the dashboard; commit; return to the working branch; merge.",
+      "See": "active cockpit instruments, feature/baseline comparison, and the integrated working car.",
+      "Completion": "a distinct feature branch and its recorded dashboard change have been integrated. Sensible alternative branch names are accepted."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 32,
+    "title": "Mission 4: integrate the pit crew",
+    "minutes": 7,
+    "fields": {
+      "See": "sensor beams identify the obstacle; the graph shows the combined contributions.",
+      "Do": "`git fetch origin`, inspect the update, and `git merge origin/pit-crew` while on the working branch.",
+      "Completion": "the remote contribution has been fetched and merged; fetch alone does not enable the sensors."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 33,
+    "title": "Mission 5: resolve the tyre disagreement",
+    "minutes": 12,
+    "fields": {
+      "Do": "commit `compound=wet` locally; fetch the prepared tyre plan; merge `origin/tyre-plan`; inspect markers; retain the wet-track choice; remove markers; stage and complete the merge commit.",
+      "See": "configuration validation identifies the conflict; the resolved vehicle has wet tyres and passes the traction check.",
+      "Explain": "both contributions changed the same baseline value for different conditions. The track requirement guides the decision.",
+      "Completion": "the conflict is resolved in a committed merge, with no marker text left in the valid vehicle configuration."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 34,
+    "title": "Mission 6: review, synchronize, and reach the grid",
+    "minutes": 8,
+    "fields": {
+      "Do": "push the working branch; open the simulated pull request; inspect its diff/checks; complete the prepared review; merge remotely; `git switch main`; `git pull --ff-only origin main`.",
+      "See": "the remote accepted car first, then the synchronized local main car. Press Test Lap; the completed prototype follows the track successfully.",
+      "Completion": "the reviewed pushed snapshot is integrated into remote main and local main. Unstaged edits cannot sneak into the proposal. The final lap occupies the end of this mission's allotted time."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 35,
+    "title": "What your team actually accomplished",
+    "minutes": 3,
+    "fields": {
+      "See": "the final car, complete commit graph, mission evidence, and a summary of the repair/contribution sequence.",
+      "Do": "explain one commit, show where a branch was integrated, and identify the conflict-resolution decision.",
+      "Result": "students connect the successful vehicle with development history, not just a checklist of commands."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 36,
+    "title": "Exit checkpoint",
+    "minutes": 3,
+    "fields": {
+      "Do": "identify what a commit saves; explain when a conflict requires a decision; order branch/commit/push/pull-request/review/merge/synchronize.",
+      "See": "brief explanatory feedback and links to the relevant chapter for a retry.",
+      "Result": "a final understanding check without public grades or speed pressure."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 37,
+    "title": "Take it into a real project",
+    "minutes": 2,
+    "fields": {
+      "See": "downloadable command reference, the plain-text starter project, setup checklist, and links to official Git/GitHub documentation.",
+      "Explain": "the same concepts apply outside this simulation. Real GitHub work requires a real repository/account and prepared authentication.",
+      "Do": "save the student link and resources. If the session ends at 150 minutes, this is the final screen.",
+      "Result": "a clear route from the workshop to independent practice."
+    },
+    "context": null,
+    "optional": false
+  },
+  {
+    "number": 38,
+    "title": "Check your real environment",
+    "minutes": 8,
+    "fields": {
+      "See/do": "starter download; terminal location guidance; `git --version`; `git config --global user.name \"Your Name\"`; `git config --global user.email \"you@example.com\"`; `git help <command>`; check that GitHub authentication is already ready. Replace identity placeholders with the student's own details.",
+      "Result": "prepared students can begin; others pair up or use the alternative guided practice. Do not promise fresh installation/authentication fits in this slot."
+    },
+    "context": null,
+    "optional": true
+  },
+  {
+    "number": 39,
+    "title": "Make a real local repair",
+    "minutes": 8,
+    "fields": {
+      "Do": "initialize the starter with `git init -b main`; inspect/edit a file; stage/commit; inspect real history; create a feature branch and record an improvement.",
+      "Result": "the command output and recorded files come from real Git on the student's computer."
+    },
+    "context": null,
+    "optional": true
+  },
+  {
+    "number": 40,
+    "title": "Share and review on real GitHub",
+    "minutes": 14,
+    "fields": {
+      "Do": "use a prepared personal repository; `git remote add origin <actual-repository-url>` and inspect `git remote -v`; push main and the feature branch; open a pull request in GitHub; inspect/review/merge; synchronize local main.",
+      "Result": "a real contribution in a real repository. Use current official authentication instructions and no account-password push guidance.\n\nIf the environment is not ready, extend the core with another independent mission attempt and discussion. An optional, separately tested regression/revert screen may replace part of this extension: inspect a prepared bad single-parent commit and revert it, observing a new corrective commit. Enable that bonus only after its simulator behaviour has been implemented and verified."
+    },
+    "context": null,
+    "optional": true
+  }
+]
